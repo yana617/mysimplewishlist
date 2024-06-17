@@ -3,40 +3,72 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 200 20% 98%;
-    --btn-background: 200 10% 91%;
-    --btn-background-hover: 200 10% 89%;
-    --foreground: 200 50% 3%;
-  }
-
-  @media (prefers-color-scheme: dark) {
     :root {
-      --background: 200 50% 3%;
-      --btn-background: 200 10% 9%;
-      --btn-background-hover: 200 10% 12%;
-      --foreground: 200 20% 96%;
+        --background: 200 20% 98%;
+        --btn-background: 200 10% 91%;
+        --btn-background-hover: 200 10% 89%;
+        --foreground: 200 50% 3%;
+
+        --main-blue: #005fda;
+
+        --dark-grey: #b5bcb9;
+        --light-grey: rgba(232, 228, 230, 255);
+        --dark-green: rgba(61, 70, 47, 255);
+        --grey-black: rgba(41, 42, 41, 255);
+        --blue: #7d8bc0;
+
+        --checkbox-green: #32CD32;
     }
-  }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background: 200 50% 3%;
+            --btn-background: 200 10% 9%;
+            --btn-background-hover: 200 10% 12%;
+            --foreground: 200 20% 96%;
+        }
+    }
 }
 
 @layer base {
-  * {
-    @apply border-foreground/20;
-  }
+    * {
+        @apply border-foreground/20;
+    }
 }
 
 .animate-in {
-  animation: animateIn 0.3s ease 0.15s both;
+    animation: animateIn 0.3s ease 0.15s both;
+}
+
+.bg-image-left {
+    background-image: linear-gradient(-90deg, rgba(227, 227, 227, 1) 0%, rgba(247, 247, 247, 0) 18%);
+}
+.bg-image-right {
+    background-image: linear-gradient(90deg, #e3e3e3 0%, rgba(247, 247, 247, 0) 18%);
+}
+
+* {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        Fira Sans,
+        Droid Sans,
+        Helvetica Neue,
+        sans-serif;
 }
 
 @keyframes animateIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

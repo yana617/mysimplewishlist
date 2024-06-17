@@ -7,6 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "dark-grey": "var(--dark-grey)",
+        "light-grey": "var(--light-grey)",
+        "dark-green": "var(--dark-green)",
+        "grey-black": "var(--grey-black)",
+        "blue": "var(--blue)",
+        "checkbox-green": "var(--checkbox-green)",
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         btn: {
@@ -16,5 +23,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };

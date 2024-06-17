@@ -6,11 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
-    "@supabase/ssr": "latest",
-    "@supabase/supabase-js": "latest",
+    "@supabase/auth-helpers-react": "0.5.0",
+    "@supabase/ssr": "0.3.0",
+    "@supabase/supabase-js": "2.43.5",
     "autoprefixer": "10.4.17",
-    "geist": "^1.2.1",
-    "next": "latest",
+    "geist": "1.2.1",
+    "next": "14.2.4",
     "postcss": "8.4.33",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -21,6 +22,9 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
-    "encoding": "^0.1.13"
+    "daisyui": "4.12.2",
+    "encoding": "0.1.13",
+    "prettier": "3.3.2",
+    "prettier-plugin-tailwindcss": "0.6.4"
   }
 }
