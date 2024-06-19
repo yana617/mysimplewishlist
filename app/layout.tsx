@@ -4,6 +4,7 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { AuthProvider } from '@/components/AuthProvider';
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className='bg-background text-foreground'>
                 <main className='flex min-h-screen flex-col items-center'>
                     <Header />
-                    {children}
+                    <AuthProvider>{children}</AuthProvider>
                     <Footer />
                 </main>
             </body>

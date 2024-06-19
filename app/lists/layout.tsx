@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
 
 import { createClient } from '@/utils/supabase/server';
-import { AuthProvider } from '@/components/AuthProvider';
 
 export default async function ListsLayout({ children }: { children: React.ReactNode }) {
     const supabase = createClient();
@@ -14,5 +13,5 @@ export default async function ListsLayout({ children }: { children: React.ReactN
         redirect('/login');
     }
 
-    return <AuthProvider>{children}</AuthProvider>;
+    return <>{children}</>;
 }

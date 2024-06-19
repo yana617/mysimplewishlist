@@ -22,10 +22,10 @@ export default async function AuthButton() {
         <div className='flex items-center gap-4'>
             Hey, {user.email}!
             <Link
-                href='/lists'
+                href='/home'
                 className='flex rounded-md bg-btn-background px-3 py-2 no-underline hover:bg-btn-background-hover'
             >
-                My Lists
+                Home
             </Link>
             <form action={signOut}>
                 <button className='rounded-md bg-btn-background px-4 py-2 no-underline hover:bg-btn-background-hover'>
