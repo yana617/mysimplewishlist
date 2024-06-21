@@ -1,8 +1,8 @@
 import { Header } from '@/components/Header';
 import { ExampleWish } from '@/components/wish/ExampleWish';
-import { generatePrimaryButtonStyles, generateSecondaryButtonStyles } from '@/lib/styles';
+import { generatePrimaryButtonStyles } from '@/lib/styles';
 
-export const Arrow = ({ className = '' }: { className?: string }) => (
+const Arrow = ({ className = '' }: { className?: string }) => (
     <div className={className}>
         <div className="h-2.5 w-2.5 rotate-45 rotate-90 border border-b-[0px] border-l-[0px] border-r-[3px] border-t-[3px] border-solid border-[rgba(0,0,0,0.6)] before:absolute before:-left-2.5 before:top-[7px] before:block before:h-2.5 before:w-2.5 before:border before:border-b-[0px] before:border-l-[0px] before:border-r-[3px] before:border-t-[3px] before:border-solid before:border-[rgba(0,0,0,0.3)] before:content-[''] after:absolute after:left-2.5 after:top-[-13px] after:block after:h-2.5 after:w-2.5 after:border after:border-b-[0px] after:border-l-[0px] after:border-r-[3px] after:border-t-[3px] after:border-solid after:border-black after:content-['']" />
     </div>
