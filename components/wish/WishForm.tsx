@@ -1,5 +1,7 @@
 import { FormEvent, useState } from 'react';
 
+import { generatePrimaryButtonStyles } from '@/lib/styles';
+
 export type WishFormValues = {
     label: string;
     link: string;
@@ -48,7 +50,7 @@ export const WishForm = ({ initialValues, onSubmitHandler }: WishFormProps) => {
 
             <p className='text-sm'>* You can edit/remove later</p>
 
-            <button className='bg-blue btn text-white' disabled={!values.label}>
+            <button className={generatePrimaryButtonStyles()} disabled={!values.label}>
                 Save
             </button>
         </form>

@@ -1,28 +1,28 @@
 import { GeistSans } from 'geist/font/sans';
 
 import './globals.css';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { AuthProvider } from '@/components/AuthProvider';
+import Head from 'next/head';
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
 export const metadata = {
     metadataBase: new URL(defaultUrl),
-    title: 'My Simple Wishlist',
-    description: 'The fastest way to get gifts',
+    title: 'My Simple Wishlist - send it to your friends',
+    description: 'The simplest wishlist to create and share with friends and family. Real-time updates, mobile and desktop compatible.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang='en' className={GeistSans.className}>
+            <Head>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+            </Head>
             <GoogleAnalytics />
             <body className='bg-background text-foreground'>
                 <main className='flex min-h-screen flex-col items-center'>
-                    <Header />
                     <AuthProvider>{children}</AuthProvider>
-                    <Footer />
                 </main>
             </body>
         </html>

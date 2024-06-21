@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
 import { createClient } from '@/utils/supabase/server';
+import { generatePrimaryButtonStyles, generateSecondaryButtonStyles } from '@/lib/styles';
 
 export default async function AuthButton() {
     const supabase = createClient();
@@ -20,15 +21,14 @@ export default async function AuthButton() {
 
     return user ? (
         <div className='flex items-center gap-4'>
-            Hey, {user.email}!
             <Link
                 href='/home'
-                className='flex rounded-md bg-btn-background px-3 py-2 no-underline hover:bg-btn-background-hover'
+                className={generatePrimaryButtonStyles('px-3 py-2')}
             >
                 Home
             </Link>
             <form action={signOut}>
-                <button className='rounded-md bg-btn-background px-4 py-2 no-underline hover:bg-btn-background-hover'>
+                <button className={generateSecondaryButtonStyles('px-4 py-2')}>
                     Logout
                 </button>
             </form>
@@ -36,7 +36,7 @@ export default async function AuthButton() {
     ) : (
         <Link
             href='/login'
-            className='flex rounded-md bg-btn-background px-3 py-2 no-underline hover:bg-btn-background-hover'
+            className={generatePrimaryButtonStyles('px-3 py-2')}
         >
             Login
         </Link>

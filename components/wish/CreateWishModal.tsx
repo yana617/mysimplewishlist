@@ -19,7 +19,7 @@ export const CreateWishModal = ({ listId }: { listId: string }) => {
 
     return (
         <dialog id='create_wish_modal' className='modal'>
-            <div className='modal-box w-[500px]'>
+            <div className='modal-box w-[500px] mobile:w-[90%]'>
                 <form method='dialog'>
                     <button className='btn btn-circle btn-ghost btn-sm absolute right-2 top-2'>✕</button>
                 </form>

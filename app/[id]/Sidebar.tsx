@@ -9,6 +9,7 @@ import { Database } from '@/lib/schema';
 import { createClient } from '@/utils/supabase/client';
 import { getListsByUserId, insertList } from '@/utils/supabase/fetches';
 import { Loading } from '@/components/Loading';
+import { generatePrimaryButtonStyles, generateSecondaryButtonStyles } from '@/lib/styles';
 
 type List = Database['public']['Tables']['list']['Row'];
 
@@ -53,7 +54,7 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
         }
 
         return <>{children}</>;
-    }, [lists.length]);
+    }, [lists.length, isLoading]);
 
     const onAddNewList = async () => {
         await insertList(supabase, newListName, userId!);
@@ -61,7 +62,7 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
     };
 
     return (
-        <div className='animate-in drawer max-h-[calc(100vh_-_145px)] lg:drawer-open'>
+        <div className='animate-in drawer max-h-[calc(100vh_-_64px)] lg:drawer-open'>
             <input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
             <div className='drawer-content flex flex-col items-center justify-center'>
                 {/* Page content here
@@ -71,7 +72,7 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
 
                 {contentComponent}
             </div>
-            <div className='drawer-side max-h-[calc(100vh_-_145px)]'>
+            <div className='drawer-side max-h-[calc(100vh_-_64px)]'>
                 <label htmlFor='my-drawer-2' aria-label='close sidebar' className='drawer-overlay'></label>
                 <ul className='menu min-h-full w-80 bg-base-200 p-4 text-base-content'>
                     {lists.map((list) => (
@@ -90,9 +91,9 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
                         />
                     )}
 
-                    <div className='mt-4 flex w-full'>
+                    <div className='mt-4 flex w-full justify-between'>
                         <button
-                            className={`btn btn-primary btn-sm ${isAdding ? 'w-6/12' : 'w-full'}`}
+                            className={generatePrimaryButtonStyles(isAdding ? 'w-[48%]' : 'w-full')}
                             onClick={() => {
                                 if (!isAdding) {
                                     setIsAdding(true);
@@ -106,7 +107,7 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
                         </button>
                         {isAdding && (
                             <button
-                                className='btn-cancel btn btn-sm w-6/12'
+                                className={generateSecondaryButtonStyles('w-[48%]')}
                                 onClick={() => {
                                     setIsAdding(false);
                                     setNewListName('');

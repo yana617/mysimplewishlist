@@ -1,0 +1,2 @@
+export const generatePrimaryButtonStyles = (additionalStyles: string = '') => `btn shadow-md btn-sm text-white bg-btn-background hover:bg-btn-background-hover border-none cursor-pointer bg-blue ${additionalStyles}`;
+export const generateSecondaryButtonStyles = (additionalStyles: string = '') => `btn shadow-md btn-sm text-grey-black bg-white hover:bg-light-grey border-none cursor-pointer ${additionalStyles}`;

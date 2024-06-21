@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { Database } from '@/lib/schema';
 import { Wish } from '@/components/wish/Wish';
@@ -9,6 +9,7 @@ import { CreateWishModal } from '@/components/wish/CreateWishModal';
 import { AuthContext } from '@/components/AuthProvider';
 import { getListById, getWishesByListId } from '@/utils/supabase/fetches';
 import { Loading } from '@/components/Loading';
+import { generatePrimaryButtonStyles } from '@/lib/styles';
 
 type List = Database['public']['Tables']['list']['Row'];
 type Wish = Database['public']['Tables']['wish']['Row'];
@@ -61,19 +62,23 @@ export const WishList = ({ listId }: { listId: string }) => {
 
     const isMyList = useMemo(() => userId === list?.user_id, [userId, list?.user_id]);
 
+    const copyToClipboard = useCallback(() => {
+        navigator.clipboard.writeText(window.location.toString());
+    }, []);
+
     if (isLoading) {
         return <Loading />;
     }
 
     return (
-        <main className='flex h-[calc(100vh_-_145px)] w-full'>
-            <div className='flex w-full items-center justify-center max-h-[calc(100vh_-_145px)] overflow-auto'>
-                <div className='flex max-w-[600px] flex-col gap-2 max-h-[calc(100vh_-_145px)] py-8'>
+        <main className='flex h-[calc(100vh_-_64px)] w-full'>
+            <div className='flex max-h-[calc(100vh_-_64px)] w-full items-center justify-center overflow-auto'>
+                <div className='flex max-h-[calc(100vh_-_64px)] max-w-[600px] flex-col gap-2 py-8'>
                     <div className='mb-8 flex items-center justify-center gap-6'>
                         <b className='text-2xl'>{list?.name}</b>
                         {isMyList && (
                             <button
-                                className='btn btn-primary btn-sm'
+                                className={generatePrimaryButtonStyles()}
                                 //@ts-ignore
                                 onClick={() => document.getElementById('create_wish_modal')?.showModal()}
                             >
@@ -81,14 +86,25 @@ export const WishList = ({ listId }: { listId: string }) => {
                             </button>
                         )}
                     </div>
-                    {wishes.map((wish) => {
-                        return <Wish key={wish.id} {...wish} isMyList={isMyList} />;
-                    })}
+                    {wishes
+                        .sort((w) => (!!w.link ? -1 : 1))
+                        .map((wish) => {
+                            return <Wish key={wish.id} {...wish} isMyList={isMyList} />;
+                        })}
                     {wishes.length === 0 && isMyList && <>No wishes, let's add one</>}
                 </div>
             </div>
 
             <CreateWishModal listId={listId} />
+
+            {isMyList && (
+                <button
+                    className={generatePrimaryButtonStyles('absolute bottom-4 right-4')}
+                    onClick={copyToClipboard}
+                >
+                    Copy share link
+                </button>
+            )}
         </main>
     );
 };
