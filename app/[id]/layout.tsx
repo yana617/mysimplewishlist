@@ -1,10 +1,10 @@
 import { Header } from "@/components/Header";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children, params }: { children: React.ReactNode; params: { id: string } }) {
     return (
-        <>
-            <Header />
+        <div className="w-full h-screen bg-base-200">
+            <Header listId={params.id} />
             {children}
-        </>
+        </div>
     );
 }
