@@ -22,7 +22,7 @@ export default function Login({ searchParams }: { searchParams: { message: strin
             return redirect('/login?message=Could not authenticate user');
         }
 
-        return redirect('/lists');
+        return redirect('/home');
     };
 
     const signUp = async (formData: FormData) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -25,17 +25,17 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
     const [newListName, setNewListName] = useState('');
     const [isAdding, setIsAdding] = useState(false);
 
+    const fetchLists = useCallback(async () => {
+        const { data, error } = await getListsByUserId(supabase, userId!);
+
+        if (!error) {
+            setLists(data);
+        }
+        setIsLoading(false);
+    }, [userId]);
+
     useEffect(() => {
-        const fetchLists = async () => {
-            const { data, error } = await getListsByUserId(supabase, userId!);
-
-            if (!error) {
-                setLists(data);
-            }
-            setIsLoading(false);
-        };
-
-        if (userId && listId !== HOME_KEY) {
+        if (userId) {
             fetchLists();
         }
     }, [supabase, userId]);
@@ -49,7 +49,7 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
             return <Loading />;
         }
 
-        if (!lists.length) {
+        if (!lists.length || listId == HOME_KEY) {
             return <>No data</>;
         }
 
@@ -58,6 +58,7 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
 
     const onAddNewList = async () => {
         await insertList(supabase, newListName, userId!);
+        await fetchLists();
         setNewListName('');
     };
 
