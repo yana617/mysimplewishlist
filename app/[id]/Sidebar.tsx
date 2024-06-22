@@ -35,7 +35,7 @@ export const Sidebar = ({ children, listId }: React.PropsWithChildren<{ listId: 
             setIsLoading(false);
         };
 
-        if (userId) {
+        if (userId && listId !== HOME_KEY) {
             fetchLists();
         }
     }, [supabase, userId]);
