@@ -28,7 +28,7 @@ export default async function AuthButton() {
                 Home
             </Link>
             <form action={signOut}>
-                <button className={generateSecondaryButtonStyles('px-4 py-2')}>
+                <button className={generateSecondaryButtonStyles('px-4 py-2 border border-solid border-dark-grey')}>
                     Logout
                 </button>
             </form>

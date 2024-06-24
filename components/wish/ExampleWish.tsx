@@ -19,7 +19,7 @@ export const ExampleWish = ({ label, checked }: Partial<Wish>) => {
                     checked={checkedValue}
                     onChange={(e) => setCheckedValue(e.target.checked)}
                 />
-                <span className='label-text ml-4'>{label} </span>
+                <span className='label-text ml-4 text-color-theme'>{label} </span>
             </label>
         </div>
     );

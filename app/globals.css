@@ -19,6 +19,8 @@
 
         --btn-background: var(--blue);
         --btn-background-hover: var(--dark-blue);
+
+        --color-theme: var(--grey-black): 
     }
 
     @media (prefers-color-scheme: dark) {
@@ -28,6 +30,8 @@
 
             --btn-background: var(--blue);
             --btn-background-hover: var(--dark-blue);
+
+            --color-theme: var(white): 
         }
     }
 }

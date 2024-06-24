@@ -1,26 +1,19 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import { useContext } from 'react';
+import { WishList } from '../../components/Wishlist';
+import { createClient } from '@/utils/supabase/server';
+import { getListById } from '@/utils/supabase/fetches';
+import { Database } from '@/lib/schema';
 
-import { AuthContext } from '@/components/AuthProvider';
-import { Loading } from '@/components/Loading';
-import { WishList } from './Wishlist';
-import { Sidebar } from './Sidebar';
+type List = Database['public']['Tables']['list']['Row'];
 
-export default function Page({ params }: { params: any }) {
-    const { userId, isLoading: isUserLoading } = useContext(AuthContext);
+export default async function Page({ params }: { params: Record<string, string> }) {
+    const supabase = createClient();
 
-    if (isUserLoading) {
-        return <Loading />;
+    const { data: list } = await getListById(supabase, params.id);
+    if (!list) {
+        return redirect('/');
     }
 
-    if (!userId) {
-        return <WishList listId={params.id} />;
-    }
-
-    return (
-        <Sidebar listId={params.id}>
-            <WishList listId={params.id} />
-        </Sidebar>
-    );
+    return <WishList list={list as List} />;
 }

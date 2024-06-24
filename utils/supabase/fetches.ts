@@ -23,9 +23,9 @@ export const deleteWishById = async (supabase: Supabase, id: string) => {
 };
 
 export const getListsByUserId = async (supabase: Supabase, userId: string) => {
-    return supabase.from('list').select('id, name, user_id, created_at').eq('user_id', userId);
+    return supabase.from('list').select('id, name, user_id, created_at').eq('user_id', userId).order('name');
 };
 
 export const insertList = async (supabase: Supabase, listName: string, userId: string) => {
-    return supabase.from('list').insert({ name: listName, user_id: userId });
+    return supabase.from('list').insert({ name: listName, user_id: userId }).select().single();
 }

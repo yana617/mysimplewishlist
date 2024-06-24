@@ -1,37 +1,38 @@
 import Link from 'next/link';
+import { CiMenuBurger } from 'react-icons/ci';
 
-import { createClient } from '@/utils/supabase/server';
 import AuthButton from './AuthButton';
-import { getListById } from '@/utils/supabase/fetches';
 
-const HOME_KEY = 'home';
-
-export const Header = async ({ isLanding, listId }: { isLanding?: boolean; listId?: string }) => {
-    const supabase = createClient();
-
-    let isMyList = false;
-
-    if (listId) {
-        const { data } = await getListById(supabase, listId);
-
-        const {
-            data: { user },
-        } = await supabase.auth.getUser();
-
-        isMyList = user?.id === data?.user_id || !!user?.id && listId == HOME_KEY;
-    }
-
+export const Title = ({ styles }: { styles: string }) => {
     return (
-        <nav className='z-30 flex h-16 w-full justify-center'>
-            <div className='flex h-16 w-full items-center justify-between pr-12 text-sm mobile:pr-4'>
-                <Link
-                    href='/'
-                    className={`mobile:bg-inherit h-full w-80 cursor-pointer py-5 text-center ${isLanding ? 'ml-20 text-white' : ''}${isMyList ? 'text-grey-black bg-base-200' : ''} mobile:ml-2`}
-                >
-                    <p className='text-xl mobile:mr-2'>&#127880; My simple wishlist</p>
-                </Link>
-                <AuthButton />
-            </div>
-        </nav>
+        <Link href='/'>
+            <p className={styles}>&#127880; My simple wishlist</p>
+        </Link>
     );
 };
+
+export const LandingHeader = () => (
+    <nav className='z-30 flex h-16 w-full items-center justify-center'>
+        <div className='mobile:px-2 flex h-16 w-full items-center justify-between pl-36 pr-12 text-sm'>
+            <Title styles='mobile:pr-2 text-center text-xl font-medium tracking-[0.5px] text-white' />
+            <AuthButton />
+        </div>
+    </nav>
+);
+
+export const WishlistHeader = ({ isMyList }: { isMyList?: boolean }) => (
+    <nav className='z-30 flex h-16 w-full items-center justify-between px-6 mobile:px-2'>
+        {isMyList ? (
+            <label htmlFor='my-drawer-2' className='mobile:flex drawer-button ml-8 hidden'>
+                <CiMenuBurger size={26} />
+            </label>
+        ) : (
+            <Title styles='pr-2 text-center text-xl font-medium tracking-[0.5px]' />
+        )}
+        <div
+            className={`flex h-16 items-center text-sm ${isMyList ? 'mobile:px-2 w-full pl-36 justify-end pr-12' : ''}`}
+        >
+            <AuthButton />
+        </div>
+    </nav>
+);

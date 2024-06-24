@@ -17,7 +17,7 @@ export const DeleteIcon = ({ onClick }: { onClick: () => void }) => {
 
 export const WishLink = ({ link }: { link: string }) => (
     <a href={link} target='_blank' className='text-blue hover:underline' rel='noreferrer'>
-        <button className={generatePrimaryButtonStyles('btn-xs')}>ссылка</button>
+        <button className={generatePrimaryButtonStyles('btn-xs')}>link</button>
     </a>
 );
 

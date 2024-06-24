@@ -1,9 +1,9 @@
-import { Header } from "@/components/Header";
+import { WishlistHeader } from "@/components/Header";
 
-export default function Layout({ children, params }: { children: React.ReactNode; params: { id: string } }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div className="w-full h-screen">
-            <Header listId={params.id} />
+            <WishlistHeader />
             {children}
         </div>
     );

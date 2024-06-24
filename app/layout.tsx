@@ -1,9 +1,9 @@
 import { GeistSans } from 'geist/font/sans';
+import Head from 'next/head';
 
 import './globals.css';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { AuthProvider } from '@/components/AuthProvider';
-import Head from 'next/head';
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
