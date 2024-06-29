@@ -29,6 +29,7 @@ export default async function Page() {
         <>
             <WishlistHeader isMyList />
             <div className='animate-in drawer max-h-[calc(100vh_-_64px)] lg:drawer-open'>
+                <input id='lists-drawer' type='checkbox' className='drawer-toggle' />
                 <div className='drawer-content flex flex-col items-center justify-center'>No lists</div>
                 <Sidebar lists={lists as List[]} />
             </div>

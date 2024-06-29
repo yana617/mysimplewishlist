@@ -50,7 +50,7 @@ export default function Login({ searchParams }: { searchParams: { message: strin
 
     return (
         <>
-            <LandingHeader />
+            <LandingHeader textColor='text-foreground' />
             <div className='flex w-full flex-1 flex-col justify-center gap-2 px-8 sm:max-w-md'>
                 <form className='animate-in flex w-full flex-1 flex-col justify-center gap-2 text-foreground'>
                     <label className='text-md' htmlFor='email'>
@@ -74,7 +74,7 @@ export default function Login({ searchParams }: { searchParams: { message: strin
                     />
                     <SubmitButton
                         formAction={signIn}
-                        className='mb-2 rounded-md bg-blue px-4 py-2 text-white'
+                        className='bg-blue mb-2 rounded-md px-4 py-2 text-white'
                         pendingText='Signing In...'
                     >
                         Sign In

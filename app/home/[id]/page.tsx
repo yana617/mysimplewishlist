@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: Record<string, string> 
 
     return (
         <>
-            <input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
+            <input id='lists-drawer' type='checkbox' className='drawer-toggle' />
             <div className='drawer-content flex flex-col items-center justify-center'>
                 <WishList list={list as List} isMyList />
             </div>
