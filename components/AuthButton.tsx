@@ -23,12 +23,12 @@ export default async function AuthButton() {
         <div className='flex items-center gap-4'>
             <Link
                 href='/home'
-                className={generatePrimaryButtonStyles('px-3 py-2')}
+                className={generatePrimaryButtonStyles('')}
             >
                 Home
             </Link>
             <form action={signOut}>
-                <button className={generateSecondaryButtonStyles('px-4 py-2 border border-solid border-dark-grey')}>
+                <button className={generateSecondaryButtonStyles('')}>
                     Logout
                 </button>
             </form>
@@ -36,7 +36,7 @@ export default async function AuthButton() {
     ) : (
         <Link
             href='/login'
-            className={generatePrimaryButtonStyles('px-3 py-2')}
+            className={generatePrimaryButtonStyles('')}
         >
             Login
         </Link>

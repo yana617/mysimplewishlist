@@ -8,19 +8,15 @@
         --foreground: 200 50% 3%;
 
         --dark-grey: #b5bcb9;
-        --light-grey: rgba(232, 228, 230, 255);
+        --light-grey: #f8f7f8;
+        /* --light-grey: rgba(232, 228, 230, 255); */
         --dark-green: rgba(61, 70, 47, 255);
         --grey-black: rgba(41, 42, 41, 255);
 
         --blue: #007bff;
-        --dark-blue: #005FDA;
+        --dark-blue: #005fda;
 
-        --checkbox-green: #32CD32;
-
-        --btn-background: var(--blue);
-        --btn-background-hover: var(--dark-blue);
-
-        --color-theme: var(--grey-black): 
+        --checkbox-green: #32cd32;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -31,14 +27,8 @@
             --btn-background: var(--blue);
             --btn-background-hover: var(--dark-blue);
 
-            --color-theme: var(white): 
+            --color-theme: var(white): ;
         }
-    }
-}
-
-@layer base {
-    * {
-        @apply border-foreground/20;
     }
 }
 
@@ -46,26 +36,8 @@
     animation: animateIn 0.3s ease 0.15s both;
 }
 
-.bg-image-left {
-    background-image: linear-gradient(-90deg, rgba(227, 227, 227, 1) 0%, rgba(247, 247, 247, 0) 18%);
-}
-.bg-image-right {
-    background-image: linear-gradient(90deg, #e3e3e3 0%, rgba(247, 247, 247, 0) 18%);
-}
-
 * {
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        Segoe UI,
-        Roboto,
-        Oxygen,
-        Ubuntu,
-        Cantarell,
-        Fira Sans,
-        Droid Sans,
-        Helvetica Neue,
-        sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 @keyframes animateIn {
@@ -77,4 +49,8 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.font-myriad {
+    font-family: 'Myriad Pro';
 }

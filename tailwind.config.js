@@ -27,4 +27,24 @@ module.exports = {
         },
     },
     plugins: [require('daisyui')],
+    daisyui: {
+        themes: [
+            {
+                light: {
+                    ...require('daisyui/src/theming/themes')['light'],
+                    '.btn-blue': {
+                        'background-color': 'var(--blue)',
+                        'border-color': 'var(--blue)',
+                    },
+                },
+                dark: {
+                    ...require('daisyui/src/theming/themes')['dark'],
+                    '.btn-blue': {
+                        'background-color': 'var(--blue)',
+                        'border-color': 'var(--blue)',
+                    },
+                },
+            },
+        ],
+    },
 };

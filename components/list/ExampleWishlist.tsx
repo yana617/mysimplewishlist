@@ -29,11 +29,11 @@ export const ExampleWishlist = () => {
     };
     const onSubmit = (e: any) => {
         e.preventDefault();
-        void router.push('/login', );
+        void router.push('/login');
     }
 
     return (
-        <main className='mobile:hidden relative flex h-[400px] w-[500px] items-center justify-center rounded-2xl border border-solid bg-base-200'>
+        <main className='mobile:hidden relative flex h-[500px] w-[700px] items-center justify-center rounded-2xl border border-solid border-base-300 text-dark-green'>
             <div className='flex flex-col gap-2 py-8'>
                 <div className='mb-8 flex items-center justify-center gap-6'>
                     <b className='text-2xl'>Kate B-DAY 27/07</b>
@@ -51,7 +51,6 @@ export const ExampleWishlist = () => {
                     })}
                 </div>
             </div>
-            <p className='absolute right-4 top-4 rounded-md p-2 shadow-lg'>mini-example</p>
             <button
                 className={generatePrimaryButtonStyles('absolute bottom-4 right-4')}
                 onClick={copyToClipboard}

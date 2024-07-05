@@ -50,7 +50,7 @@ export default function Login({ searchParams }: { searchParams: { message: strin
 
     return (
         <>
-            <LandingHeader textColor='text-foreground' />
+            <LandingHeader />
             <div className='flex w-full flex-1 flex-col justify-center gap-2 px-8 sm:max-w-md'>
                 <form className='animate-in flex w-full flex-1 flex-col justify-center gap-2 text-foreground'>
                     <label className='text-md' htmlFor='email'>

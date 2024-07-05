@@ -11,17 +11,17 @@ export const Title = ({ styles }: { styles: string }) => {
     );
 };
 
-export const LandingHeader = ({ textColor = 'text-white' }: { textColor?: string }) => (
-    <nav className='z-30 flex h-16 w-full items-center justify-center'>
+export const LandingHeader = () => (
+    <nav className='z-30 flex h-16 w-full items-center justify-center shadow-[rgba(0,_0,_0,_0.1)_0px_10px_30px] bg-light-grey'>
         <div className='mobile:px-2 flex h-16 w-full items-center justify-between pl-36 pr-12 text-sm'>
-            <Title styles={`mobile:pr-2 text-center text-xl font-medium tracking-[0.5px] ${textColor}`} />
+            <Title styles={`mobile:pr-2 text-center text-xl font-medium text-grey-black`} />
             <AuthButton />
         </div>
     </nav>
 );
 
 export const WishlistHeader = ({ isMyList }: { isMyList?: boolean }) => (
-    <nav className='z-30 flex h-16 w-full items-center justify-between px-6 mobile:px-2'>
+    <nav className='z-30 flex h-16 w-full items-center justify-between px-6 mobile:px-4'>
         {isMyList ? (
             <label htmlFor='lists-drawer' className='mobile:flex drawer-button ml-8 hidden'>
                 <CiMenuBurger size={26} />
