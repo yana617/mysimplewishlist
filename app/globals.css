@@ -9,7 +9,6 @@
 
         --dark-grey: #b5bcb9;
         --light-grey: #f8f7f8;
-        /* --light-grey: rgba(232, 228, 230, 255); */
         --dark-green: rgba(61, 70, 47, 255);
         --grey-black: rgba(41, 42, 41, 255);
 
@@ -53,4 +52,9 @@
 
 .font-myriad {
     font-family: 'Myriad Pro';
+}
+
+.btn-blue {
+    background-color: var(--blue);
+    border-color: var(--blue);
 }
